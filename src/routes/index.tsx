@@ -1,11 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
-import heroMockupAsset from "@/assets/sobragrana-hero-mockup.png.asset.json";
+import heroMockup from "@/assets/mockup-hero.png";
 
 const CHECKOUT_URL = "https://pay.kiwify.com.br/cVSnHjf";
 const WHATSAPP_URL = "https://wa.me/5565974002235?text=Ol%C3%A1%2C%20vim%20da%20p%C3%A1gina%20do%20M%C3%A9todo%20Sobragrana.%20Quero%20comprar!";
 const PIXEL_ID = "1208878434780081";
-const heroMockup = heroMockupAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
