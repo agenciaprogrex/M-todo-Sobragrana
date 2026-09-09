@@ -465,10 +465,10 @@ function Index() {
             <div className="rounded-lg border-2 border-primary bg-card p-7 text-center shadow-xl sm:p-9 lg:sticky lg:top-6">
               <p className="text-sm font-extrabold uppercase text-primary">Oferta especial</p>
               <p className="mt-5 text-base text-muted-foreground">Tudo isso teria o valor de:</p>
-              <p className="mt-1 text-2xl font-bold text-muted-foreground line-through">R$ 147,00</p>
+              <p className="mt-1 text-2xl font-bold text-muted-foreground line-through">R$ 97,00</p>
               <p className="mt-6 text-sm font-black uppercase text-foreground">Mas hoje você pode começar por:</p>
-              <div className="mt-3 text-6xl font-black text-foreground">R$ 97<span className="text-2xl">,00</span></div>
-              <p className="mt-2 font-semibold text-muted-foreground">à vista ou 12x de R$ 9,74 no cartão</p>
+              <div className="mt-3 text-6xl font-black text-foreground">R$ 47<span className="text-2xl">,00</span></div>
+              <p className="mt-2 font-semibold text-muted-foreground">à vista ou 12x de R$ 5,22 no cartão</p>
               <CtaButton className="mt-7 w-full">Quero ter acesso ao SobraGrana</CtaButton>
               <p className="mt-4 text-sm text-muted-foreground">Acesso imediato após a confirmação do pagamento.</p>
               <div className="mt-6 border-t border-border pt-5 text-sm font-semibold text-foreground">Compra segura • Garantia de 7 dias • Acesso imediato</div>
@@ -480,10 +480,10 @@ function Index() {
       <section className="bg-muted/40">
         <div className="mx-auto max-w-4xl px-5 py-16 text-center sm:py-20">
           <Eyebrow>Pense nisso</Eyebrow>
-          <div className="mt-6 space-y-3 text-lg text-muted-foreground"><p>Uma compra por impulso pode facilmente custar R$ 97.</p><p>Um jantar pode custar R$ 97.</p><p>Alguns pequenos gastos acumulados durante uma semana podem ultrapassar R$ 97.</p></div>
+          <div className="mt-6 space-y-3 text-lg text-muted-foreground"><p>Uma compra por impulso pode facilmente custar R$ 47.</p><p>Um jantar pode custar R$ 47.</p><p>Alguns pequenos gastos acumulados durante uma semana podem ultrapassar R$ 47.</p></div>
           <p className="mx-auto mt-7 max-w-3xl text-xl font-bold leading-relaxed text-foreground">Aqui você está investindo esse valor em um método criado para ajudar você a enxergar melhor suas próprias decisões financeiras.</p>
-          <p className="mt-7 text-3xl font-black text-primary">DE R$ 147 POR R$ 97.</p>
-          <p className="mt-1 font-bold text-foreground">Ou 12x de R$ 9,74.</p>
+          <p className="mt-7 text-3xl font-black text-primary">DE R$ 97 POR R$ 47.</p>
+          <p className="mt-1 font-bold text-foreground">Ou 12x de R$ 5,22.</p>
           <CtaButton className="mt-7">Quero organizar meu dinheiro</CtaButton>
         </div>
       </section>
@@ -508,7 +508,7 @@ function Index() {
           <h2 className="text-3xl font-black uppercase leading-tight sm:text-4xl">Comece hoje a enxergar para onde seu dinheiro está indo.</h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-primary-foreground/85">Tenha o método, o Prompt Mestre e o passo a passo para transformar o ChatGPT em uma ferramenta de apoio ao seu controle financeiro.</p>
           <a href={CHECKOUT_URL} className="group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-foreground px-8 py-4 text-base font-extrabold uppercase text-background shadow-lg transition-transform hover:scale-[1.02] active:scale-100 sm:w-auto">Quero ter acesso ao SobraGrana <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" /></a>
-          <p className="mt-4 text-sm text-primary-foreground/80">R$ 97 à vista • 12x de R$ 9,74 • Garantia de 7 dias</p>
+          <p className="mt-4 text-sm text-primary-foreground/80">R$ 47 à vista • 12x de R$ 5,22 • Garantia de 7 dias</p>
         </div>
       </section>
 
