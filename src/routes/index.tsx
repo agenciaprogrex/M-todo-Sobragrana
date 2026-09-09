@@ -267,7 +267,7 @@ function Index() {
               <CheckList items={heroBenefits} compact />
             </div>
             <div className="mt-8">
-              <CtaButton>Quero organizar meu dinheiro</CtaButton>
+              <CtaButton>Quero ver sobrar dinheiro</CtaButton>
               <p className="mt-3 text-sm font-medium text-muted-foreground">Acesso imediato • Método passo a passo • Prompt pronto</p>
             </div>
           </div>
@@ -316,7 +316,7 @@ function Index() {
               <p className="border-l-4 border-primary pl-5 text-xl font-bold text-foreground">O primeiro passo para mudar não é simplesmente parar de gastar. É enxergar para onde o dinheiro está indo.</p>
             </div>
           </div>
-          <div className="mt-10 text-center"><CtaButton className="sm:w-auto">Quero organizar meu dinheiro</CtaButton></div>
+          <div className="mt-10 text-center"><CtaButton className="sm:w-auto">Quero ver sobrar dinheiro</CtaButton></div>
         </div>
       </section>
 
