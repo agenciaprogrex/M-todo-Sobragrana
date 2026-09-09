@@ -1,10 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import heroMockup from "@/assets/mockup-hero.png";
+import { checkoutEventParameters, initMetaPixel, trackMetaEvent } from "@/lib/meta-pixel";
 
 const CHECKOUT_URL = "https://pay.kiwify.com.br/cVSnHjf";
 const WHATSAPP_URL = "https://wa.me/5565974002235?text=Ol%C3%A1%2C%20vim%20da%20p%C3%A1gina%20do%20M%C3%A9todo%20Sobragrana.%20Quero%20comprar!";
-const PIXEL_ID = "1208878434780081";
+
+function trackInitiateCheckout() {
+  trackMetaEvent("InitiateCheckout", checkoutEventParameters);
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -186,7 +190,7 @@ function Logo() {
 
 function CtaButton({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <a href={CHECKOUT_URL} className={`group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-7 py-4 text-center text-base font-extrabold uppercase text-primary-foreground shadow-lg transition-transform hover:scale-[1.02] active:scale-100 sm:w-auto ${className}`}>
+    <a href={CHECKOUT_URL} onClick={trackInitiateCheckout} className={`group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-7 py-4 text-center text-base font-extrabold uppercase text-primary-foreground shadow-lg transition-transform hover:scale-[1.02] active:scale-100 sm:w-auto ${className}`}>
       <span>{children}</span>
       <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" />
     </a>
@@ -235,24 +239,8 @@ function FaqItem({ item }: { item: { q: string; a: string } }) {
 
 function Index() {
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const w = window as any;
-    if (w.fbq) return;
-    const n: any = function (this: any) {
-      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-    };
-    w.fbq = n;
-    n.push = n;
-    n.loaded = true;
-    n.version = "2.0";
-    n.queue = [];
-    const t = document.createElement("script");
-    t.async = true;
-    t.src = "https://connect.facebook.net/en_US/fbevents.js";
-    const s = document.getElementsByTagName("script")[0];
-    s?.parentNode?.insertBefore(t, s);
-    w.fbq("init", PIXEL_ID);
-    w.fbq("track", "PageView");
+    initMetaPixel();
+    trackMetaEvent("PageView");
   }, []);
 
   return (
@@ -507,7 +495,7 @@ function Index() {
         <div className="mx-auto max-w-4xl px-5 py-16 text-center sm:py-20">
           <h2 className="text-3xl font-black uppercase leading-tight sm:text-4xl">Comece hoje a enxergar para onde seu dinheiro está indo.</h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-primary-foreground/85">Tenha o método, o Prompt Mestre e o passo a passo para transformar o ChatGPT em uma ferramenta de apoio ao seu controle financeiro.</p>
-          <a href={CHECKOUT_URL} className="group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-foreground px-8 py-4 text-base font-extrabold uppercase text-background shadow-lg transition-transform hover:scale-[1.02] active:scale-100 sm:w-auto">Quero ter acesso ao SobraGrana <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" /></a>
+          <a href={CHECKOUT_URL} onClick={trackInitiateCheckout} className="group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-foreground px-8 py-4 text-base font-extrabold uppercase text-background shadow-lg transition-transform hover:scale-[1.02] active:scale-100 sm:w-auto">Quero ter acesso ao SobraGrana <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" /></a>
           <p className="mt-4 text-sm text-primary-foreground/80">R$ 47 à vista • 12x de R$ 5,22 • Garantia de 7 dias</p>
         </div>
       </section>
