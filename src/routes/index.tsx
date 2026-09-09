@@ -258,7 +258,7 @@ function Index() {
               Imagine chegar ao fim do mês, abrir sua conta e ver que ainda <span className="text-primary">sobrou dinheiro.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-xl font-semibold leading-relaxed text-foreground lg:mx-0">
-              Descubra como começar a controlar seu dinheiro usando o ChatGPT, mesmo que você ganhe pouco, já tenha tentado se organizar antes e nunca tenha conseguido manter o hábito. Faça tudo pelo ChatGPT, sem precisar criar uma planilha e veja seu dinheiro sobrando.
+              Descubra como começar a controlar seu dinheiro usando o ChatGPT, mesmo que você ganhe pouco, já tenha tentado se organizar antes e nunca tenha conseguido manter o hábito.
             </p>
             <div className="mx-auto mt-7 max-w-2xl space-y-4 text-left text-base leading-relaxed text-muted-foreground lg:mx-0">
               <p>Com o <strong className="text-foreground">SOBRAGRANA</strong>, você aprende um método simples para registrar suas despesas pelo ChatGPT, acompanhar seu limite mensal e finalmente entender para onde seu dinheiro está indo.</p>
