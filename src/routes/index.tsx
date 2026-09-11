@@ -188,12 +188,64 @@ function Logo() {
   );
 }
 
-function CtaButton({ children, className = "" }: { children: ReactNode; className?: string }) {
+function CtaButton({ children, className = "", href = CHECKOUT_URL }: { children: ReactNode; className?: string; href?: string }) {
+  const opensCheckout = href === CHECKOUT_URL;
+
   return (
-    <a href={CHECKOUT_URL} onClick={trackInitiateCheckout} className={`group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-7 py-4 text-center text-base font-extrabold uppercase text-primary-foreground shadow-lg transition-transform hover:scale-[1.02] active:scale-100 sm:w-auto ${className}`}>
+    <a href={href} onClick={opensCheckout ? trackInitiateCheckout : undefined} className={`group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-7 py-4 text-center text-base font-extrabold uppercase text-primary-foreground shadow-lg transition-transform hover:scale-[1.02] active:scale-100 sm:w-auto ${className}`}>
       <span>{children}</span>
       <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" />
     </a>
+  );
+}
+
+function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
+  const [remaining, setRemaining] = useState("--:--:--");
+  const [dateLabel, setDateLabel] = useState("");
+
+  useEffect(() => {
+    const updateTimer = () => {
+      const now = new Date();
+      const deadline = new Date(now);
+      deadline.setHours(23, 59, 59, 999);
+      const milliseconds = Math.max(0, deadline.getTime() - now.getTime());
+      const hours = Math.floor(milliseconds / 3_600_000);
+      const minutes = Math.floor((milliseconds % 3_600_000) / 60_000);
+      const seconds = Math.floor((milliseconds % 60_000) / 1_000);
+
+      setRemaining([hours, minutes, seconds].map((value) => String(value).padStart(2, "0")).join(":"));
+      setDateLabel(
+        new Intl.DateTimeFormat("pt-BR", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        }).format(now),
+      );
+    };
+
+    updateTimer();
+    const interval = window.setInterval(updateTimer, 1_000);
+    return () => window.clearInterval(interval);
+  }, []);
+
+  if (compact) {
+    return (
+      <div className="rounded-lg border border-primary/30 bg-primary/5 px-4 py-4">
+        <p className="text-sm font-black uppercase tracking-wide text-foreground">Condição promocional de hoje termina em</p>
+        <p className="mt-1 font-mono text-4xl font-black tabular-nums text-primary" aria-label={`Tempo restante: ${remaining}`}>{remaining}</p>
+        <p className="mt-1 text-sm font-semibold text-muted-foreground">Válida até 23h59 de {dateLabel || "hoje"}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="sticky top-0 z-50 border-b border-primary/30 bg-foreground text-background">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-1 px-4 py-3 text-center sm:flex-row sm:gap-3">
+        <span className="text-sm font-black uppercase tracking-wide">Condição promocional de hoje termina em</span>
+        <span className="font-mono text-xl font-black tabular-nums text-primary" aria-label={`Tempo restante: ${remaining}`}>{remaining}</span>
+        <span className="text-sm font-semibold text-background/75">• até 23h59 de {dateLabel || "hoje"}</span>
+      </div>
+    </div>
   );
 }
 
@@ -245,6 +297,7 @@ function Index() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
+      <DailyOfferTimer />
       <header className="border-b border-border bg-background">
         <div className="mx-auto flex max-w-6xl items-center justify-center px-5 py-5 sm:justify-start">
           <Logo />
@@ -267,7 +320,7 @@ function Index() {
               <CheckList items={heroBenefits} compact />
             </div>
             <div className="mt-8">
-              <CtaButton>Quero ver sobrar dinheiro</CtaButton>
+              <CtaButton href="#para-quem">Quero ver sobrar dinheiro</CtaButton>
               <p className="mt-3 text-sm font-medium text-muted-foreground">Acesso imediato • Método passo a passo • Prompt pronto</p>
             </div>
           </div>
@@ -292,7 +345,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-24">
+      <section id="para-quem" className="scroll-mt-20 mx-auto max-w-5xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-24">
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
           <div><Eyebrow>Para quem é</Eyebrow><SectionTitle className="mt-4">Este método foi criado para você que:</SectionTitle></div>
           <CheckList items={audience} />
@@ -451,7 +504,8 @@ function Index() {
               <CheckList items={offerItems} compact />
             </div>
             <div className="rounded-lg border-2 border-primary bg-card p-7 text-center shadow-xl sm:p-9 lg:sticky lg:top-6">
-              <p className="text-sm font-extrabold uppercase text-primary">Oferta especial</p>
+              <DailyOfferTimer compact />
+              <p className="mt-6 text-sm font-extrabold uppercase text-primary">Oferta especial</p>
               <p className="mt-5 text-base text-muted-foreground">Tudo isso teria o valor de:</p>
               <p className="mt-1 text-2xl font-bold text-muted-foreground line-through">R$ 97,00</p>
               <p className="mt-6 text-sm font-black uppercase text-foreground">Mas hoje você pode começar por:</p>
