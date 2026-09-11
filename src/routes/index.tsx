@@ -92,15 +92,6 @@ const productContents = [
   },
 ];
 
-const practicalChanges = [
-  ["Você recebe um Prompt Mestre.", "Não precisa descobrir o que perguntar ao ChatGPT."],
-  ["Você aprende a definir um limite mensal.", "Consegue acompanhar quanto ainda pode gastar."],
-  ["Você registra cada despesa.", "Para de depender da memória no final do mês."],
-  ["Você acompanha o percentual utilizado.", "Percebe quando está chegando perto do limite."],
-  ["Você recebe checklists.", "Tem um processo simples para seguir."],
-  ["Você aprende um método diário.", "A organização deixa de ser apenas uma intenção e começa a virar rotina."],
-];
-
 const audience = [
   "Não sabe exatamente para onde seu dinheiro está indo.",
   "Se surpreende com o saldo positivo no final do mês.",
@@ -239,11 +230,11 @@ function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <div className="sticky top-0 z-50 border-b border-primary/30 bg-foreground text-background">
+    <div className="sticky top-0 z-50 border-b border-red-900 bg-red-700 text-white shadow-lg">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-1 px-4 py-3 text-center sm:flex-row sm:gap-3">
         <span className="text-sm font-black uppercase tracking-wide">Condição promocional de hoje termina em</span>
-        <span className="font-mono text-xl font-black tabular-nums text-primary" aria-label={`Tempo restante: ${remaining}`}>{remaining}</span>
-        <span className="text-sm font-semibold text-background/75">• até 23h59 de {dateLabel || "hoje"}</span>
+        <span className="font-mono text-xl font-black tabular-nums text-white" aria-label={`Tempo restante: ${remaining}`}>{remaining}</span>
+        <span className="text-sm font-semibold text-white/80">• até 23h59 de {dateLabel || "hoje"}</span>
       </div>
     </div>
   );
@@ -446,7 +437,7 @@ function Index() {
           </div>
           <div className="mt-12 grid gap-4 md:grid-cols-2">
             {productContents.map((item) => (
-              <article key={item.number} className="flex gap-5 rounded-lg border border-border bg-card p-6">
+              <article key={item.number} className="flex gap-5 rounded-lg border-2 border-primary bg-card p-6 shadow-sm">
                 <span className="text-2xl font-black text-primary">{item.number}</span>
                 <div><h3 className="text-lg font-black uppercase text-foreground">{item.title}</h3><p className="mt-2 leading-relaxed text-muted-foreground">{item.text}</p></div>
               </article>
@@ -454,17 +445,6 @@ function Index() {
           </div>
           <p className="mt-8 text-center text-2xl font-black text-primary">E MUITO MAIS.</p>
           <div className="mt-8 text-center"><CtaButton className="sm:w-auto">Quero ter acesso ao SobraGrana</CtaButton></div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-24">
-        <div className="text-center"><SectionTitle>O que isso muda na prática?</SectionTitle></div>
-        <div className="mt-12 divide-y divide-border border-y border-border">
-          {practicalChanges.map(([feature, benefit]) => (
-            <div key={feature} className="grid gap-3 py-6 sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-6">
-              <p className="font-bold text-foreground">{feature}</p><ArrowIcon className="hidden h-6 w-6 text-primary sm:block" /><p className="leading-relaxed text-muted-foreground">{benefit}</p>
-            </div>
-          ))}
         </div>
       </section>
 
