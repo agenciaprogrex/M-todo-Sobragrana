@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import heroMockup from "@/assets/mockup-hero.png";
+import chatgptControleFinanceiro from "@/assets/chatgpt-controle-financeiro.png";
 import { checkoutEventParameters, initMetaPixel, trackMetaEvent } from "@/lib/meta-pixel";
 
 const CHECKOUT_URL = "https://pay.kiwify.com.br/cVSnHjf";
@@ -312,18 +313,17 @@ function Index() {
         </div>
       </section>
 
-      <section id="bloco-2" className="scroll-mt-20 mx-auto max-w-4xl px-5 py-16 text-center sm:py-24">
-        <SectionTitle>Todo mês parece a mesma história?</SectionTitle>
-        <div className="mx-auto mt-9 max-w-2xl space-y-3 text-lg leading-relaxed text-muted-foreground">
-          <p>Seu dinheiro entra.</p><p>Você paga algumas contas.</p><p>Passa no mercado.</p><p>Compra alguma coisa na padaria.</p><p>Pede uma comida.</p><p>Abastece.</p>
-          <div className="py-3 font-bold text-foreground"><p>Faz uma compra de R$ 20 aqui...</p><p>R$ 40 ali...</p><p>R$ 80 acolá...</p></div>
-          <p>E quando chega perto do final do mês, olha para o saldo e pensa:</p>
-        </div>
-        <blockquote className="mx-auto mt-8 max-w-3xl border-y border-primary/30 py-7 text-3xl font-black text-primary sm:text-4xl">“ONDE FOI PARAR MEU DINHEIRO?”</blockquote>
-        <div className="mx-auto mt-8 max-w-2xl space-y-4 text-lg leading-relaxed text-muted-foreground">
-          <p>O problema é que dificilmente existe uma única compra responsável por isso.</p>
-          <p>São dezenas de pequenas decisões que vão acontecendo durante o mês.</p>
-          <p>E quando você não registra, <strong className="text-foreground">você simplesmente perde a visão do todo.</strong></p>
+      <section id="bloco-2" className="scroll-mt-20 bg-background">
+        <div className="mx-auto max-w-5xl px-5 py-16 text-center sm:py-24">
+          <SectionTitle>Tudo isso para você em poucos segundos</SectionTitle>
+          <img
+            src={chatgptControleFinanceiro}
+            alt="Exemplo do ChatGPT registrando um gasto e atualizando o controle financeiro"
+            width={1024}
+            height={1536}
+            loading="lazy"
+            className="mx-auto mt-10 h-auto w-full max-w-[680px] rounded-2xl border border-border shadow-2xl"
+          />
         </div>
       </section>
 
