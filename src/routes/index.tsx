@@ -185,6 +185,7 @@ function CtaButton({ children, className = "", href = CHECKOUT_URL }: { children
 function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
   const [remaining, setRemaining] = useState("--:--:--");
   const [dateLabel, setDateLabel] = useState("");
+  const [alertDateLabel, setAlertDateLabel] = useState("");
 
   useEffect(() => {
     const updateTimer = () => {
@@ -204,6 +205,13 @@ function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
           year: "numeric",
         }).format(now),
       );
+      const weekday = new Intl.DateTimeFormat("pt-BR", { weekday: "long" }).format(now);
+      const numericDate = new Intl.DateTimeFormat("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      }).format(now);
+      setAlertDateLabel(`${weekday}, ${numericDate}`.toUpperCase());
     };
 
     updateTimer();
@@ -223,10 +231,10 @@ function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
 
   return (
     <div className="sticky top-0 z-50 border-b border-red-900 bg-red-700 text-white shadow-lg">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-1 px-4 py-3 text-center">
-        <span className="text-sm font-black uppercase tracking-wide">Condição promocional de hoje termina em</span>
-        <span className="font-mono text-xl font-black tabular-nums text-white" aria-label={`Tempo restante: ${remaining}`}>{remaining}</span>
-        <span className="text-sm font-semibold text-white/80">• até 23h59 de {dateLabel || "hoje"}</span>
+      <div className="mx-auto flex max-w-4xl flex-col items-center justify-center px-4 py-3 text-center text-sm font-black uppercase leading-snug tracking-wide sm:text-base">
+        <span>ATENÇÃO:</span>
+        <span>O acesso promocional Método SobraGrana encerra {alertDateLabel || "hoje"}.</span>
+        <span>Após essa data o valor poderá ser alterado.</span>
       </div>
     </div>
   );
@@ -282,40 +290,33 @@ function Index() {
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <DailyOfferTimer />
       <header className="border-b border-border bg-background">
-        <div className="mx-auto flex max-w-6xl items-center justify-center px-5 py-5 sm:justify-start">
+        <div className="mx-auto flex max-w-6xl items-center justify-center px-5 py-5">
           <Logo />
         </div>
       </header>
 
       <section className="bg-secondary/45">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 sm:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 lg:py-20">
-          <div className="text-center lg:text-left">
+        <div className="mx-auto max-w-5xl px-5 py-12 text-center sm:py-16">
+          <div className="mx-auto max-w-4xl text-center">
             <h1 className="text-4xl font-black leading-[1.08] text-foreground sm:text-5xl lg:text-[3.35rem]">
               Transforme o ChatGPT no seu <span className="text-primary">controle financeiro pessoal</span> e descubra para onde seu dinheiro está indo.
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-xl font-semibold leading-relaxed text-foreground lg:mx-0">
+            <p className="mx-auto mt-6 max-w-3xl text-xl font-semibold leading-relaxed text-foreground">
               Registre seus gastos em segundos, acompanhe seu limite mensal e saiba quanto ainda pode gastar sem planilhas complicadas e sem precisar baixar mais um aplicativo.
             </p>
-            <div className="mx-auto mt-7 flex aspect-video w-full max-w-2xl items-center justify-center rounded-xl border-2 border-dashed border-primary/40 bg-background/70 text-center shadow-inner lg:mx-0">
+            <div className="mx-auto mt-7 flex aspect-video w-full max-w-3xl items-center justify-center rounded-xl border-2 border-dashed border-primary/40 bg-background/70 text-center shadow-inner">
               <div className="px-6">
                 <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary text-2xl text-primary-foreground">▶</span>
                 <p className="mt-3 font-extrabold uppercase text-foreground">Espaço reservado para o vídeo</p>
                 <p className="mt-1 text-sm text-muted-foreground">A VSL será adicionada aqui</p>
               </div>
             </div>
-            <div className="mx-auto mt-7 max-w-xl rounded-lg border border-primary/30 bg-card p-5 text-left shadow-sm lg:mx-0">
-              <p className="font-bold text-foreground">Imagine simplesmente mandar:</p>
-              <blockquote className="mt-3 border-l-4 border-primary pl-4 text-2xl font-black text-primary">“Mercado R$162”</blockquote>
-              <p className="mt-5 font-bold text-foreground">E receber na hora:</p>
-              <CheckList compact items={["Gasto registrado", "Categoria atualizada", "Total gasto no mês", "Quanto ainda pode gastar", "Percentual do seu limite utilizado"]} />
-              <p className="mt-5 font-black text-foreground">Tudo usando o ChatGPT.</p>
-            </div>
             <div className="mt-8">
               <CtaButton href="#bloco-2">Quero ver como funciona ↓</CtaButton>
             </div>
           </div>
-          <div className="flex justify-center lg:justify-end">
-            <img src={heroMockup} alt="Guia SobraGrana e celular mostrando o ChatGPT registrando uma despesa" width={1024} height={1024} fetchPriority="high" className="w-full max-w-[560px]" />
+          <div className="mt-8 flex justify-center">
+            <img src={heroMockup} alt="Guia SobraGrana e celular mostrando o ChatGPT registrando uma despesa" width={1024} height={1024} fetchPriority="high" className="h-auto w-full max-w-[520px]" />
           </div>
         </div>
       </section>
