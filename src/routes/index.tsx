@@ -35,15 +35,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const heroBenefits = [
-  "Registre uma despesa em poucos segundos",
-  "Saiba quanto já gastou no mês",
-  "Veja quanto ainda pode gastar",
-  "Acompanhe o percentual do seu limite utilizado",
-  "Receba alertas quando atingir 70%, 85% e 100%",
-  "Faça tudo pelo ChatGPT, sem precisar criar uma planilha",
-];
-
 const productContents = [
   {
     number: "01",
@@ -298,21 +289,21 @@ function Index() {
       <section className="bg-secondary/45">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 sm:py-16 lg:grid-cols-[1.08fr_0.92fr] lg:gap-8 lg:py-20">
           <div className="text-center lg:text-left">
-            <h1 className="text-4xl font-black uppercase leading-[1.08] text-foreground sm:text-5xl lg:text-[3.35rem]">
-              Imagine chegar ao fim do mês, abrir sua conta e ver que ainda <span className="text-primary">sobrou dinheiro.</span>
+            <h1 className="text-4xl font-black leading-[1.08] text-foreground sm:text-5xl lg:text-[3.35rem]">
+              Transforme o ChatGPT no seu <span className="text-primary">controle financeiro pessoal</span> e descubra para onde seu dinheiro está indo.
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-xl font-semibold leading-relaxed text-foreground lg:mx-0">
-              Descubra como começar a controlar seu dinheiro usando o ChatGPT, mesmo que você ganhe pouco, já tenha tentado se organizar antes e nunca tenha conseguido manter o hábito.
+              Registre seus gastos em segundos, acompanhe seu limite mensal e saiba quanto ainda pode gastar — sem planilhas complicadas e sem precisar baixar mais um aplicativo.
             </p>
-            <div className="mx-auto mt-7 max-w-2xl space-y-4 text-left text-base leading-relaxed text-muted-foreground lg:mx-0">
-              <p>Com o <strong className="text-foreground">SOBRAGRANA</strong>, você aprende um método simples para registrar suas despesas pelo ChatGPT, acompanhar seu limite mensal e finalmente entender para onde seu dinheiro está indo.</p>
-            </div>
-            <div className="mx-auto mt-7 max-w-xl text-left lg:mx-0">
-              <CheckList items={heroBenefits} compact />
+            <div className="mx-auto mt-7 max-w-xl rounded-lg border border-primary/30 bg-card p-5 text-left shadow-sm lg:mx-0">
+              <p className="font-bold text-foreground">Imagine simplesmente mandar:</p>
+              <blockquote className="mt-3 border-l-4 border-primary pl-4 text-2xl font-black text-primary">“Mercado R$162”</blockquote>
+              <p className="mt-5 font-bold text-foreground">E receber na hora:</p>
+              <CheckList compact items={["Gasto registrado", "Categoria atualizada", "Total gasto no mês", "Quanto ainda pode gastar", "Percentual do seu limite utilizado"]} />
+              <p className="mt-5 font-black text-foreground">Tudo usando o ChatGPT.</p>
             </div>
             <div className="mt-8">
-              <CtaButton href="#para-quem">Quero ver sobrar dinheiro</CtaButton>
-              <p className="mt-3 text-sm font-medium text-muted-foreground">Acesso imediato • Método passo a passo • Prompt pronto</p>
+              <CtaButton href="#bloco-2">Quero ver como funciona ↓</CtaButton>
             </div>
           </div>
           <div className="flex justify-center lg:justify-end">
@@ -321,7 +312,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-5 py-16 text-center sm:py-24">
+      <section id="bloco-2" className="scroll-mt-20 mx-auto max-w-4xl px-5 py-16 text-center sm:py-24">
         <SectionTitle>Todo mês parece a mesma história?</SectionTitle>
         <div className="mx-auto mt-9 max-w-2xl space-y-3 text-lg leading-relaxed text-muted-foreground">
           <p>Seu dinheiro entra.</p><p>Você paga algumas contas.</p><p>Passa no mercado.</p><p>Compra alguma coisa na padaria.</p><p>Pede uma comida.</p><p>Abastece.</p>
@@ -340,6 +331,10 @@ function Index() {
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
           <div><Eyebrow>Para quem é</Eyebrow><SectionTitle className="mt-4">Este método foi criado para você que:</SectionTitle></div>
           <CheckList items={audience} />
+        </div>
+        <div className="mt-10 text-center">
+          <CtaButton>Quero ter acesso por R$ 47,00</CtaButton>
+          <p className="mt-3 text-sm font-bold text-muted-foreground">R$ 47,00 • Acesso imediato • Método validado</p>
         </div>
       </section>
 
