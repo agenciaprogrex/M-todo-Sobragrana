@@ -173,11 +173,12 @@ function Logo() {
 
 function CtaButton({ children, className = "", href = CHECKOUT_URL }: { children: ReactNode; className?: string; href?: string }) {
   const opensCheckout = href === CHECKOUT_URL;
+  const isPageAnchor = href.startsWith("#");
 
   return (
     <a href={href} onClick={opensCheckout ? trackInitiateCheckout : undefined} className={`cta-shake group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-7 py-4 text-center text-base font-extrabold uppercase text-primary-foreground shadow-lg transition-transform active:scale-100 sm:w-auto ${className}`}>
       <span>{children}</span>
-      <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+      {!isPageAnchor && <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" />}
     </a>
   );
 }
@@ -231,8 +232,8 @@ function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
 
   return (
     <div className="sticky top-0 z-50 border-b border-red-900 bg-red-700 text-white shadow-lg">
-      <div className="mx-auto flex max-w-4xl flex-col items-center justify-center px-4 py-3 text-center text-sm font-black uppercase leading-snug tracking-wide sm:text-base">
-        <span>ATENÇÃO:</span>
+      <div className="mx-auto grid max-w-5xl gap-0.5 px-3 py-2 text-center text-xs font-black uppercase leading-tight tracking-wide sm:text-sm">
+        <span>ATENÇÃO ⚠️</span>
         <span>O acesso promocional Método SobraGrana encerra {alertDateLabel || "hoje"}.</span>
         <span>Após essa data o valor poderá ser alterado.</span>
       </div>
