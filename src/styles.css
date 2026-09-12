@@ -157,3 +157,21 @@
     letter-spacing: -0.02em;
   }
 }
+
+@keyframes cta-shake {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  20% { transform: translateX(-4px) rotate(-0.6deg); }
+  40% { transform: translateX(4px) rotate(0.6deg); }
+  60% { transform: translateX(-3px) rotate(-0.4deg); }
+  80% { transform: translateX(3px) rotate(0.4deg); }
+}
+
+.cta-shake:hover {
+  animation: cta-shake 0.42s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-shake:hover {
+    animation: none;
+  }
+}

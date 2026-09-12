@@ -175,7 +175,7 @@ function CtaButton({ children, className = "", href = CHECKOUT_URL }: { children
   const opensCheckout = href === CHECKOUT_URL;
 
   return (
-    <a href={href} onClick={opensCheckout ? trackInitiateCheckout : undefined} className={`group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-7 py-4 text-center text-base font-extrabold uppercase text-primary-foreground shadow-lg transition-transform hover:scale-[1.02] active:scale-100 sm:w-auto ${className}`}>
+    <a href={href} onClick={opensCheckout ? trackInitiateCheckout : undefined} className={`cta-shake group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-7 py-4 text-center text-base font-extrabold uppercase text-primary-foreground shadow-lg transition-transform active:scale-100 sm:w-auto ${className}`}>
       <span>{children}</span>
       <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" />
     </a>
@@ -223,7 +223,7 @@ function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
 
   return (
     <div className="sticky top-0 z-50 border-b border-red-900 bg-red-700 text-white shadow-lg">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-1 px-4 py-3 text-center sm:flex-row sm:gap-3">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-1 px-4 py-3 text-center">
         <span className="text-sm font-black uppercase tracking-wide">Condição promocional de hoje termina em</span>
         <span className="font-mono text-xl font-black tabular-nums text-white" aria-label={`Tempo restante: ${remaining}`}>{remaining}</span>
         <span className="text-sm font-semibold text-white/80">• até 23h59 de {dateLabel || "hoje"}</span>
@@ -296,6 +296,13 @@ function Index() {
             <p className="mx-auto mt-6 max-w-2xl text-xl font-semibold leading-relaxed text-foreground lg:mx-0">
               Registre seus gastos em segundos, acompanhe seu limite mensal e saiba quanto ainda pode gastar sem planilhas complicadas e sem precisar baixar mais um aplicativo.
             </p>
+            <div className="mx-auto mt-7 flex aspect-video w-full max-w-2xl items-center justify-center rounded-xl border-2 border-dashed border-primary/40 bg-background/70 text-center shadow-inner lg:mx-0">
+              <div className="px-6">
+                <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary text-2xl text-primary-foreground">▶</span>
+                <p className="mt-3 font-extrabold uppercase text-foreground">Espaço reservado para o vídeo</p>
+                <p className="mt-1 text-sm text-muted-foreground">A VSL será adicionada aqui</p>
+              </div>
+            </div>
             <div className="mx-auto mt-7 max-w-xl rounded-lg border border-primary/30 bg-card p-5 text-left shadow-sm lg:mx-0">
               <p className="font-bold text-foreground">Imagine simplesmente mandar:</p>
               <blockquote className="mt-3 border-l-4 border-primary pl-4 text-2xl font-black text-primary">“Mercado R$162”</blockquote>
@@ -314,7 +321,7 @@ function Index() {
       </section>
 
       <section id="bloco-2" className="scroll-mt-20 bg-background">
-        <div className="mx-auto max-w-5xl px-5 py-16 text-center sm:py-24">
+        <div className="mx-auto max-w-5xl px-5 py-10 text-center sm:py-14">
           <SectionTitle>Tudo isso para você em poucos segundos</SectionTitle>
           <img
             src={chatgptControleFinanceiro}
@@ -327,7 +334,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="para-quem" className="scroll-mt-20 mx-auto max-w-5xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-24">
+      <section id="para-quem" className="scroll-mt-20 mx-auto max-w-5xl px-5 py-10 sm:py-14">
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
           <div><Eyebrow>Para quem é</Eyebrow><SectionTitle className="mt-4">Este método foi criado para você que:</SectionTitle></div>
           <CheckList items={audience} />
@@ -339,7 +346,7 @@ function Index() {
       </section>
 
       <section className="bg-muted/40">
-        <div className="mx-auto max-w-5xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-24">
+        <div className="mx-auto max-w-5xl px-5 py-10 sm:py-14">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
               <SectionTitle>O que parece pequeno hoje pode ficar grande em 30 dias.</SectionTitle>
@@ -359,7 +366,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-24">
+      <section className="mx-auto max-w-5xl px-5 py-10 sm:py-14">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionTitle>“Mas eu preciso ganhar mais para conseguir me organizar...”</SectionTitle>
@@ -381,7 +388,7 @@ function Index() {
       </section>
 
       <section className="bg-foreground text-background">
-        <div className="mx-auto grid max-w-5xl gap-12 px-5 py-16 sm:py-24 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto grid max-w-5xl gap-10 px-5 py-10 sm:py-14 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="text-sm font-extrabold uppercase text-primary">Talvez você já tenha tentado</p>
             <h2 className="mt-4 text-3xl font-black leading-tight sm:text-4xl">“Eu já tentei controlar meus gastos e não consegui.”</h2>
@@ -398,18 +405,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-4xl px-5 py-16 text-center sm:py-24">
-          <h2 className="text-3xl font-black uppercase leading-tight sm:text-5xl">Não é sobre virar especialista em finanças.</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-primary-foreground/85">É sobre finalmente conseguir olhar para o mês e saber:</p>
-          <div className="mt-8 space-y-3 text-2xl font-black sm:text-3xl">
-            <p>“EU SEI QUANTO GASTEI.”</p><p>“EU SEI QUANTO AINDA POSSO GASTAR.”</p><p>“EU SEI PARA ONDE MEU DINHEIRO ESTÁ INDO.”</p><p>“SOBROU DINHEIRO NA CONTA.”</p>
-          </div>
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-primary-foreground/85">Isso muda a maneira como você toma decisões. Porque agora, antes daquela compra por impulso, você pode saber exatamente como está seu limite.</p>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-24">
+      <section className="mx-auto max-w-6xl px-5 py-10 sm:py-14">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <img src={heroMockup} alt="SobraGrana, guia prático de controle financeiro pelo ChatGPT" width={1024} height={1024} loading="lazy" className="mx-auto w-full max-w-[520px]" />
           <div>
@@ -426,7 +422,7 @@ function Index() {
       </section>
 
       <section className="bg-muted/40">
-        <div className="mx-auto max-w-5xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-24">
+        <div className="mx-auto max-w-5xl px-5 py-10 sm:py-14">
           <div className="text-center">
             <SectionTitle className="mx-auto max-w-3xl">Tudo que você precisa para sair da intenção e começar a controlar</SectionTitle>
           </div>
@@ -444,7 +440,7 @@ function Index() {
       </section>
 
       <section className="bg-foreground text-background">
-        <div className="mx-auto max-w-5xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-24">
+        <div className="mx-auto max-w-5xl px-5 py-10 sm:py-14">
           <h2 className="max-w-4xl text-3xl font-black uppercase leading-tight sm:text-4xl">“Mas eu não tenho tempo para ficar controlando finanças todos os dias.”</h2>
           <p className="mt-6 text-xl font-bold text-primary">Você não precisa passar horas fazendo contas. A proposta é exatamente o contrário.</p>
           <div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -456,7 +452,7 @@ function Index() {
       </section>
 
       <section className="bg-secondary/55">
-        <div className="mx-auto max-w-5xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-24">
+        <div className="mx-auto max-w-5xl px-5 py-10 sm:py-14">
           <div className="text-center"><SectionTitle>Quanto custa não ter controle?</SectionTitle></div>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground">Não estamos falando necessariamente de uma compra enorme. Pode ser:</p>
           <div className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4">
@@ -471,7 +467,7 @@ function Index() {
       </section>
 
       <section id="oferta" className="scroll-mt-4 bg-background">
-        <div className="mx-auto max-w-6xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-24">
+        <div className="mx-auto max-w-6xl px-5 py-10 sm:py-14">
           <div className="text-center"><SectionTitle>Comece agora com o SobraGrana</SectionTitle></div>
           <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_0.85fr] lg:items-start">
             <div>
@@ -495,7 +491,7 @@ function Index() {
       </section>
 
       <section className="bg-muted/40">
-        <div className="mx-auto max-w-4xl px-5 py-16 text-center sm:py-20">
+        <div className="mx-auto max-w-4xl px-5 py-10 text-center sm:py-14">
           <Eyebrow>Pense nisso</Eyebrow>
           <div className="mt-6 space-y-3 text-lg text-muted-foreground"><p>Uma compra por impulso pode facilmente custar R$ 47.</p><p>Um jantar pode custar R$ 47.</p><p>Alguns pequenos gastos acumulados durante uma semana podem ultrapassar R$ 47.</p></div>
           <p className="mx-auto mt-7 max-w-3xl text-xl font-bold leading-relaxed text-foreground">Aqui você está investindo esse valor em um método criado para ajudar você a enxergar melhor suas próprias decisões financeiras.</p>
@@ -505,7 +501,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 pt-10 pb-16 sm:pt-14 sm:pb-24">
+      <section className="mx-auto max-w-5xl px-5 py-10 sm:py-14">
         <div className="rounded-lg border border-primary/30 bg-primary/5 p-8 text-center sm:p-12">
           <Eyebrow>Garantia de 7 dias</Eyebrow>
           <SectionTitle className="mt-4">Você não precisa decidir no escuro.</SectionTitle>
@@ -514,17 +510,17 @@ function Index() {
       </section>
 
       <section className="bg-muted/40">
-        <div className="mx-auto max-w-3xl px-5 py-16 sm:py-24">
+        <div className="mx-auto max-w-3xl px-5 py-10 sm:py-14">
           <div className="text-center"><Eyebrow>Perguntas frequentes</Eyebrow><SectionTitle className="mt-4">Ainda tem alguma dúvida?</SectionTitle></div>
           <div className="mt-10 space-y-3">{faq.map((item) => <FaqItem key={item.q} item={item} />)}</div>
         </div>
       </section>
 
       <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-4xl px-5 py-16 text-center sm:py-20">
+        <div className="mx-auto max-w-4xl px-5 py-10 text-center sm:py-14">
           <h2 className="text-3xl font-black uppercase leading-tight sm:text-4xl">Comece hoje a enxergar para onde seu dinheiro está indo.</h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-primary-foreground/85">Tenha o método, o Prompt Mestre e o passo a passo para transformar o ChatGPT em uma ferramenta de apoio ao seu controle financeiro.</p>
-          <a href={CHECKOUT_URL} onClick={trackInitiateCheckout} className="group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-foreground px-8 py-4 text-base font-extrabold uppercase text-background shadow-lg transition-transform hover:scale-[1.02] active:scale-100 sm:w-auto">Quero ter acesso ao SobraGrana <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" /></a>
+          <a href={CHECKOUT_URL} onClick={trackInitiateCheckout} className="cta-shake group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-foreground px-8 py-4 text-base font-extrabold uppercase text-background shadow-lg transition-transform active:scale-100 sm:w-auto">Quero ter acesso ao SobraGrana <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" /></a>
           <p className="mt-4 text-sm text-primary-foreground/80">R$ 47 à vista • 12x de R$ 5,22 • Garantia de 7 dias</p>
         </div>
       </section>
