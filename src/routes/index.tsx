@@ -293,7 +293,7 @@ function Index() {
               Transforme o ChatGPT no seu <span className="text-primary">controle financeiro pessoal</span> e descubra para onde seu dinheiro está indo.
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-xl font-semibold leading-relaxed text-foreground lg:mx-0">
-              Registre seus gastos em segundos, acompanhe seu limite mensal e saiba quanto ainda pode gastar — sem planilhas complicadas e sem precisar baixar mais um aplicativo.
+              Registre seus gastos em segundos, acompanhe seu limite mensal e saiba quanto ainda pode gastar sem planilhas complicadas e sem precisar baixar mais um aplicativo.
             </p>
             <div className="mx-auto mt-7 max-w-xl rounded-lg border border-primary/30 bg-card p-5 text-left shadow-sm lg:mx-0">
               <p className="font-bold text-foreground">Imagine simplesmente mandar:</p>
