@@ -191,3 +191,14 @@ main.min-h-screen > section > div[class*="py-"] {
     padding-block: 2.5rem;
   }
 }
+
+wistia-player[media-id="p3q4aebt7f"] {
+  display: block;
+  width: 100%;
+}
+
+wistia-player[media-id="p3q4aebt7f"]:not(:defined) {
+  background: center / contain no-repeat url("https://fast.wistia.com/embed/medias/p3q4aebt7f/swatch");
+  filter: blur(5px);
+  padding-top: 177.78%;
+}

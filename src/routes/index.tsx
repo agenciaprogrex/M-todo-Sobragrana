@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
+import { createElement, useEffect, useState, type ReactNode } from "react";
 import heroMockup from "@/assets/mockup-hero.png";
 import chatgptControleFinanceiro from "@/assets/chatgpt-controle-financeiro.png";
 import { checkoutEventParameters, initMetaPixel, trackMetaEvent } from "@/lib/meta-pixel";
@@ -281,6 +281,29 @@ function FaqItem({ item }: { item: { q: string; a: string } }) {
   );
 }
 
+function WistiaVsl() {
+  useEffect(() => {
+    const loadScript = (src: string, id: string, type?: string) => {
+      if (document.getElementById(id)) return;
+      const script = document.createElement("script");
+      script.id = id;
+      script.src = src;
+      script.async = true;
+      if (type) script.type = type;
+      document.head.appendChild(script);
+    };
+
+    loadScript("https://fast.wistia.com/player.js", "wistia-player-script");
+    loadScript("https://fast.wistia.com/embed/p3q4aebt7f.js", "wistia-video-p3q4aebt7f", "module");
+  }, []);
+
+  return (
+    <div className="mx-auto mt-7 w-full max-w-[420px] overflow-hidden rounded-xl border border-primary/30 bg-black shadow-2xl">
+      {createElement("wistia-player", { "media-id": "p3q4aebt7f", aspect: "0.5625" })}
+    </div>
+  );
+}
+
 function Index() {
   useEffect(() => {
     initMetaPixel();
@@ -305,13 +328,7 @@ function Index() {
             <p className="mx-auto mt-6 max-w-3xl text-xl font-semibold leading-relaxed text-foreground">
               Registre seus gastos em segundos, acompanhe seu limite mensal e saiba quanto ainda pode gastar sem planilhas complicadas e sem precisar baixar mais um aplicativo.
             </p>
-            <div className="mx-auto mt-7 flex aspect-video w-full max-w-3xl items-center justify-center rounded-xl border-2 border-dashed border-primary/40 bg-background/70 text-center shadow-inner">
-              <div className="px-6">
-                <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary text-2xl text-primary-foreground">▶</span>
-                <p className="mt-3 font-extrabold uppercase text-foreground">Espaço reservado para o vídeo</p>
-                <p className="mt-1 text-sm text-muted-foreground">A VSL será adicionada aqui</p>
-              </div>
-            </div>
+            <WistiaVsl />
             <div className="mt-8">
               <CtaButton href="#bloco-2">Quero ver como funciona ↓</CtaButton>
             </div>
