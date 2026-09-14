@@ -186,7 +186,6 @@ function CtaButton({ children, className = "", href = CHECKOUT_URL }: { children
 function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
   const [remaining, setRemaining] = useState("--:--:--");
   const [dateLabel, setDateLabel] = useState("");
-  const [alertDateLabel, setAlertDateLabel] = useState("");
 
   useEffect(() => {
     const updateTimer = () => {
@@ -206,13 +205,6 @@ function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
           year: "numeric",
         }).format(now),
       );
-      const weekday = new Intl.DateTimeFormat("pt-BR", { weekday: "long" }).format(now);
-      const numericDate = new Intl.DateTimeFormat("pt-BR", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-      }).format(now);
-      setAlertDateLabel(`${weekday}, ${numericDate}`.toUpperCase());
     };
 
     updateTimer();
@@ -230,12 +222,25 @@ function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
     );
   }
 
+  const [hours, minutes, seconds] = remaining.split(":");
+
   return (
-    <div className="sticky top-0 z-50 border-b border-red-900 bg-red-700 text-white shadow-lg">
-      <div className="mx-auto grid max-w-5xl gap-0.5 px-3 py-2 text-center text-xs font-black uppercase leading-tight tracking-wide sm:text-sm">
-        <span>ATENÇÃO ⚠️</span>
-        <span>O acesso promocional Método SobraGrana encerra {alertDateLabel || "hoje"}.</span>
-        <span>Após essa data o valor poderá ser alterado.</span>
+    <div className="bg-[#080808] text-white shadow-lg">
+      <div className="mx-auto flex max-w-4xl flex-col items-center px-4 py-4 text-center sm:py-5">
+        <p className="text-lg font-black uppercase tracking-wide sm:text-xl">🔥 Último dia de acesso</p>
+        <p className="mt-1 text-sm font-semibold text-white/70 sm:text-base">Assista ao vídeo antes que a oferta termine.</p>
+        <p className="mt-3 text-xs font-black uppercase tracking-widest text-white/90">Oferta encerra em:</p>
+        <div className="mt-2 flex items-start justify-center gap-2" aria-label={`Tempo restante: ${remaining}`}>
+          {[[hours, "Horas"], [minutes, "Minutos"], [seconds, "Segundos"]].map(([value, label], index) => (
+            <div key={label} className="flex items-start gap-2">
+              {index > 0 && <span className="pt-2 text-2xl font-black text-white/70">:</span>}
+              <div>
+                <div className="min-w-14 rounded-md bg-red-600 px-3 py-1.5 font-mono text-2xl font-black tabular-nums shadow-[0_0_22px_rgba(220,38,38,0.28)] sm:min-w-16 sm:text-3xl">{value}</div>
+                <p className="mt-1 text-[10px] font-black uppercase tracking-wider text-white/55">{label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -313,28 +318,22 @@ function Index() {
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <DailyOfferTimer />
-      <header className="border-b border-border bg-background">
-        <div className="mx-auto flex max-w-6xl items-center justify-center px-5 py-5">
-          <Logo />
-        </div>
-      </header>
 
-      <section className="bg-secondary/45">
-        <div className="mx-auto max-w-5xl px-5 py-12 text-center sm:py-16">
+      <section className="bg-background">
+        <div className="mx-auto max-w-5xl px-5 py-5 text-center sm:py-7">
           <div className="mx-auto max-w-4xl text-center">
-            <h1 className="text-4xl font-black leading-[1.08] text-foreground sm:text-5xl lg:text-[3.35rem]">
+            <div className="mx-auto mb-5 inline-flex rounded-full border border-primary/20 bg-primary/5 px-5 py-2 shadow-sm"><Logo /></div>
+            <h1 className="text-3xl font-black leading-[1.08] text-foreground sm:text-4xl lg:text-5xl">
               Faça seu <span className="text-primary">dinheiro sobrar no final do mês</span> sem planilhas complicadas ou aplicativos que você abandona em poucos dias.
             </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-xl font-semibold leading-relaxed text-foreground">
+            <p className="mx-auto mt-4 max-w-3xl text-lg font-semibold leading-relaxed text-foreground sm:text-xl">
               Descubra o método simples que usa o ChatGPT para você registrar seus gastos <span className="font-black text-primary">em poucos minutos</span>, saber quanto ainda pode gastar e <span className="font-black text-primary">ver o dinheiro sobrando.</span>
             </p>
             <WistiaVsl />
-            <div className="mt-8">
+            <p className="mt-4 text-sm font-bold text-muted-foreground">O preço e o botão de acesso estão logo abaixo do vídeo.</p>
+            <div className="mt-5">
               <CtaButton href="#bloco-2">Quero ver como funciona ↓</CtaButton>
             </div>
-          </div>
-          <div className="mt-8 flex justify-center">
-            <img src={heroMockup} alt="Guia SobraGrana e celular mostrando o ChatGPT registrando uma despesa" width={1024} height={1024} fetchPriority="high" className="h-auto w-full max-w-[520px]" />
           </div>
         </div>
       </section>
