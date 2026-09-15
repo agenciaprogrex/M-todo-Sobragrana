@@ -341,7 +341,7 @@ function Index() {
               Sem usar planilha. Veja como <span className="text-[1.15em] font-black text-primary">organizar</span> seus gastos em menos de <span className="text-[1.15em] font-black text-primary">1 minuto.</span>
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-lg font-normal leading-relaxed text-foreground sm:text-xl">
-              Aprenda como o ChatGPT para você registrar seus gastos em poucos minutos, e fazer seu dinheiro sobrar todo mês.
+              Use o ChatGPT por <span className="font-bold text-primary">poucos minutos</span> por dia para organizar seus gastos e fazer seu dinheiro <span className="font-bold text-primary">sobrar no final do mês.</span>
             </p>
             <WistiaVsl />
           </div>
