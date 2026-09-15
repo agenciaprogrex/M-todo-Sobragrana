@@ -338,7 +338,8 @@ function Index() {
           <div className="mx-auto max-w-4xl text-center">
             <div className="mx-auto mb-5 inline-flex rounded-full border border-primary/20 bg-primary/5 px-5 py-2 shadow-sm"><Logo /></div>
             <h1 className="text-3xl font-black leading-[1.08] text-foreground sm:text-4xl lg:text-5xl">
-              Sem usar planilha. Veja como <span className="text-[1.15em] font-black text-primary">organizar</span> seus gastos em menos de <span className="text-[1.15em] font-black text-primary">1 minuto.</span>
+              <span className="block text-[1.12em] font-black text-primary">SEM PLANILHAS.</span>
+              <span className="mt-2 block">Organize seus gastos em menos de <span className="text-[1.12em] font-black text-primary">1 MINUTO.</span></span>
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-lg font-normal leading-relaxed text-foreground sm:text-xl">
               Use o ChatGPT por <span className="font-bold text-primary">poucos minutos</span> por dia para organizar seus gastos e fazer seu dinheiro <span className="font-bold text-primary">sobrar no final do mês.</span>
