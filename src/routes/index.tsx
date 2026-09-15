@@ -342,7 +342,7 @@ function Index() {
               <span className="mt-2 block">Organize seus gastos em menos de <span className="text-[1.12em] font-black text-primary">1 MINUTO.</span></span>
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-lg font-normal leading-relaxed text-foreground sm:text-xl">
-              Use o ChatGPT por <span className="font-bold text-primary">poucos minutos</span> por dia para organizar seus gastos e fazer seu dinheiro <span className="font-bold text-primary">sobrar no final do mês.</span>
+              Use o ChatGPT <span className="font-bold text-primary">poucos minutos</span> por dia para organizar seus gastos e fazer seu dinheiro <span className="font-bold text-primary">sobrar no final do mês.</span>
             </p>
             <WistiaVsl />
           </div>
