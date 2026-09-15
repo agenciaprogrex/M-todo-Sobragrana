@@ -372,9 +372,9 @@ function Index() {
       </section>
 
       <section id="para-quem" className="scroll-mt-20 mx-auto max-w-5xl px-5 py-10 sm:py-14">
-        <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
-          <div><Eyebrow>Para quem é</Eyebrow><SectionTitle className="mt-4">Este método foi criado para você que:</SectionTitle></div>
-          <CheckList items={audience} />
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center"><Eyebrow>Para quem é</Eyebrow><SectionTitle className="mt-4">Este método foi criado para você que:</SectionTitle></div>
+          <div className="mt-8"><CheckList items={audience} /></div>
         </div>
         <div className="mt-10 text-center">
           <CtaButton>Quero ter acesso por R$ 47,00</CtaButton>
@@ -384,7 +384,7 @@ function Index() {
 
       <section className="bg-muted/40">
         <div className="mx-auto max-w-5xl px-5 py-10 sm:py-14">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="mx-auto max-w-3xl space-y-8">
             <div>
               <SectionTitle>O que parece pequeno hoje pode ficar grande em 30 dias.</SectionTitle>
               <p className="mt-5 text-lg leading-relaxed text-muted-foreground">Imagine alguns gastos aparentemente inofensivos:</p>
@@ -404,7 +404,7 @@ function Index() {
       </section>
 
       <section className="bg-primary/5 text-foreground">
-        <div className="mx-auto grid max-w-5xl gap-10 px-5 py-10 sm:py-14 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto max-w-3xl space-y-8 px-5 py-10 sm:py-14">
           <div>
             <p className="text-sm font-extrabold uppercase text-primary">Talvez você já tenha tentado</p>
             <h2 className="mt-4 text-3xl font-black leading-tight sm:text-4xl">“Eu já tentei controlar meus gastos e não consegui.”</h2>
@@ -422,7 +422,7 @@ function Index() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-10 sm:py-14">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="mx-auto max-w-3xl space-y-8">
           <img src={heroMockup} alt="SobraGrana, guia prático de controle financeiro pelo ChatGPT" width={1024} height={1024} loading="lazy" className="mx-auto w-full max-w-[520px]" />
           <div>
             <SectionTitle className="mt-4">Foi para isso que criamos o SobraGrana.</SectionTitle>
@@ -442,7 +442,7 @@ function Index() {
           <div className="text-center">
             <SectionTitle className="mx-auto max-w-3xl">Tudo que você precisa para sair da intenção e começar a controlar</SectionTitle>
           </div>
-          <div className="mt-12 grid gap-4 md:grid-cols-2">
+          <div className="mx-auto mt-12 grid max-w-3xl gap-4">
             {productContents.map((item) => (
               <article key={item.number} className="flex gap-5 rounded-lg border-2 border-primary bg-card p-6 shadow-sm">
                 <span className="text-2xl font-black text-primary">{item.number}</span>
@@ -468,23 +468,26 @@ function Index() {
       </section>
 
       <section id="oferta" className="scroll-mt-4 bg-background">
-        <div className="mx-auto max-w-6xl px-5 py-10 sm:py-14">
+        <div className="mx-auto max-w-4xl px-5 py-10 sm:py-14">
           <div className="text-center"><SectionTitle>Comece agora com o SobraGrana</SectionTitle></div>
-          <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_0.85fr] lg:items-start">
-            <div>
-              <p className="mb-6 text-xl font-bold text-foreground">Ao entrar hoje, você recebe:</p>
-              <CheckList items={offerItems} compact />
+          <div className="mx-auto mt-8 max-w-2xl"><DailyOfferTimer compact /></div>
+          <div className="mx-auto mt-10 max-w-2xl space-y-7">
+            <div className="rounded-xl border border-primary/30 bg-card p-7 text-center shadow-lg sm:p-9">
+              <p className="text-sm font-extrabold uppercase text-primary">Preço especial</p>
+              <h3 className="mt-2 text-2xl font-black text-foreground">SobraGrana Essencial</h3>
+              <p className="mt-2 text-muted-foreground">Método prático, Prompt Mestre e materiais essenciais para começar.</p>
+              <div className="mt-5 text-6xl font-black text-foreground">R$ 37<span className="text-2xl">,00</span></div>
+              <CtaButton href={WHATSAPP_URL} className="mt-6 w-full">Quero a opção de R$ 37</CtaButton>
+              <p className="mt-4 text-sm font-semibold text-muted-foreground">Acesso imediato • Garantia de 7 dias</p>
             </div>
-            <div className="rounded-lg border-2 border-primary bg-card p-7 text-center shadow-xl sm:p-9 lg:sticky lg:top-6">
-              <DailyOfferTimer compact />
-              <p className="mt-6 text-sm font-extrabold uppercase text-primary">Oferta especial</p>
-              <p className="mt-5 text-base text-muted-foreground">Tudo isso teria o valor de:</p>
-              <p className="mt-1 text-2xl font-bold text-muted-foreground line-through">R$ 97,00</p>
-              <p className="mt-6 text-sm font-black uppercase text-foreground">Mas hoje você pode começar por:</p>
+            <div className="relative rounded-xl border-2 border-primary bg-card p-7 text-center shadow-2xl sm:p-9">
+              <div className="absolute inset-x-6 -top-4 rounded-full bg-primary px-4 py-2 text-sm font-black uppercase tracking-wide text-primary-foreground shadow-lg">🔥 Mais vendido</div>
+              <h3 className="mt-3 text-2xl font-black text-foreground">SobraGrana Completo</h3>
+              <p className="mt-2 text-muted-foreground">Todos os conteúdos, checklists, exemplos e videoaulas bônus.</p>
               <div className="mt-3 text-6xl font-black text-foreground">R$ 47<span className="text-2xl">,00</span></div>
               <p className="mt-2 font-semibold text-muted-foreground">à vista ou 12x de R$ 5,22 no cartão</p>
-              <CtaButton className="mt-7 w-full">Quero ter acesso ao SobraGrana</CtaButton>
-              <p className="mt-4 text-sm text-muted-foreground">Acesso imediato após a confirmação do pagamento.</p>
+              <div className="mt-7 text-left"><CheckList items={offerItems} compact /></div>
+              <CtaButton className="mt-7 w-full">Quero a versão mais completa</CtaButton>
               <div className="mt-6 border-t border-border pt-5 text-sm font-semibold text-foreground">Compra segura • Garantia de 7 dias • Acesso imediato</div>
             </div>
           </div>
