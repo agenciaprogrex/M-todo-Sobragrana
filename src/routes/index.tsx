@@ -77,11 +77,6 @@ const productContents = [
     title: "Checklist mensal",
     text: "No final do mês, revise seus registros, analise seus gastos e identifique o que precisa ajustar.",
   },
-  {
-    number: "09",
-    title: "Videoaulas bônus",
-    text: "Veja aplicações práticas para facilitar ainda mais a execução do método.",
-  },
 ];
 
 const audience = [
@@ -376,10 +371,6 @@ function Index() {
           <div className="text-center"><Eyebrow>Para quem é</Eyebrow><SectionTitle className="mt-4">Este método foi criado para você que:</SectionTitle></div>
           <div className="mt-8"><CheckList items={audience} /></div>
         </div>
-        <div className="mt-10 text-center">
-          <CtaButton>Quero ter acesso por R$ 47,00</CtaButton>
-          <p className="mt-3 text-sm font-bold text-muted-foreground">R$ 47,00 • Acesso imediato • Método validado</p>
-        </div>
       </section>
 
       <section className="bg-muted/40">
@@ -399,7 +390,7 @@ function Index() {
               <p className="border-l-4 border-primary pl-5 text-xl font-bold text-foreground">O primeiro passo para mudar não é simplesmente parar de gastar. É enxergar para onde o dinheiro está indo.</p>
             </div>
           </div>
-          <div className="mt-10 text-center"><CtaButton className="sm:w-auto">Quero ver sobrar dinheiro</CtaButton></div>
+          <div className="mt-10 text-center"><CtaButton className="sm:w-auto">Quero ter acesso ao método</CtaButton></div>
         </div>
       </section>
 
@@ -442,7 +433,7 @@ function Index() {
           <div className="text-center">
             <SectionTitle className="mx-auto max-w-3xl">Tudo que você precisa para sair da intenção e começar a controlar</SectionTitle>
           </div>
-          <div className="mx-auto mt-12 grid max-w-3xl gap-4">
+          <div className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-2">
             {productContents.map((item) => (
               <article key={item.number} className="flex gap-5 rounded-lg border-2 border-primary bg-card p-6 shadow-sm">
                 <span className="text-2xl font-black text-primary">{item.number}</span>
