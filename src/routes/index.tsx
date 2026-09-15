@@ -81,7 +81,7 @@ const productContents = [
 
 const audience = [
   "Não sabe exatamente para onde seu dinheiro está indo.",
-  "Se surpreende com o saldo positivo no final do mês.",
+  "Fica triste em não ter dinheiro no final do mês.",
   "Começa a controlar os gastos e depois abandona.",
   "Não gosta de planilhas complicadas.",
   "Faz várias pequenas compras e perde a noção do total.",
@@ -262,9 +262,9 @@ function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
 
 function CheckList({ items, compact = false }: { items: string[]; compact?: boolean }) {
   return (
-    <ul className={compact ? "space-y-3" : "space-y-4"}>
+    <ul className={`mx-auto w-full max-w-2xl ${compact ? "space-y-3" : "space-y-4"}`}>
       {items.map((item) => (
-        <li key={item} className="flex items-start justify-center gap-3 text-center">
+        <li key={item} className="flex items-start justify-start gap-3 text-left">
           <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
             <CheckIcon className="h-4 w-4" />
           </span>
@@ -344,10 +344,6 @@ function Index() {
               Descubra o método simples que usa o ChatGPT para você registrar seus gastos <span className="font-black text-primary">em poucos minutos</span>, saber quanto ainda pode gastar e <span className="font-black text-primary">ver o dinheiro sobrando.</span>
             </p>
             <WistiaVsl />
-            <p className="mt-4 text-sm font-bold text-muted-foreground">O preço e o botão de acesso estão logo abaixo do vídeo.</p>
-            <div className="mt-5">
-              <CtaButton href="#bloco-2">Quero ver como funciona ↓</CtaButton>
-            </div>
           </div>
         </div>
       </section>
@@ -368,7 +364,7 @@ function Index() {
 
       <section id="para-quem" className="scroll-mt-20 mx-auto max-w-5xl px-5 py-10 sm:py-14">
         <div className="mx-auto max-w-3xl">
-          <div className="text-center"><Eyebrow>Para quem é</Eyebrow><SectionTitle className="mt-4">Este método foi criado para você que:</SectionTitle></div>
+          <div className="text-center"><SectionTitle>Este método foi criado para você que:</SectionTitle></div>
           <div className="mt-8"><CheckList items={audience} /></div>
         </div>
       </section>
@@ -390,7 +386,7 @@ function Index() {
               <p className="border-l-4 border-primary pl-5 text-xl font-bold text-foreground">O primeiro passo para mudar não é simplesmente parar de gastar. É enxergar para onde o dinheiro está indo.</p>
             </div>
           </div>
-          <div className="mt-10 text-center"><CtaButton className="sm:w-auto">Quero ter acesso ao método</CtaButton></div>
+          <div className="mt-10 text-center"><CtaButton href="#oferta-basico" className="sm:w-auto">Quero ter acesso ao método</CtaButton></div>
         </div>
       </section>
 
@@ -442,7 +438,7 @@ function Index() {
             ))}
           </div>
           <p className="mt-8 text-center text-2xl font-black text-primary">E MUITO MAIS.</p>
-          <div className="mt-8 text-center"><CtaButton className="sm:w-auto">Quero ter acesso ao SobraGrana</CtaButton></div>
+          <div className="mt-8 text-center"><CtaButton href="#oferta-basico" className="sm:w-auto">Quero ter acesso ao método</CtaButton></div>
         </div>
       </section>
 
@@ -463,12 +459,12 @@ function Index() {
           <div className="text-center"><SectionTitle>Comece agora com o SobraGrana</SectionTitle></div>
           <div className="mx-auto mt-8 max-w-2xl"><DailyOfferTimer compact /></div>
           <div className="mx-auto mt-10 max-w-2xl space-y-7">
-            <div className="rounded-xl border border-primary/30 bg-card p-7 text-center shadow-lg sm:p-9">
+            <div id="oferta-basico" className="scroll-mt-24 rounded-xl border border-primary/30 bg-card p-7 text-center shadow-lg sm:p-9">
               <p className="text-sm font-extrabold uppercase text-primary">Preço especial</p>
               <h3 className="mt-2 text-2xl font-black text-foreground">SobraGrana Básico</h3>
               <div className="mt-5"><CheckList compact items={["Método prático", "Prompt Mestre", "Passo a passo de como registrar gastos"]} /></div>
               <div className="mt-5 text-6xl font-black text-foreground">R$ 37<span className="text-2xl">,00</span></div>
-              <CtaButton href={WHATSAPP_URL} className="mt-6 w-full">Quero a opção de R$ 37</CtaButton>
+              <CtaButton className="mt-6 w-full">Quero ter acesso ao método</CtaButton>
               <p className="mt-4 text-sm font-semibold text-muted-foreground">Acesso imediato • Garantia de 7 dias</p>
             </div>
             <div className="relative rounded-xl border-2 border-primary bg-card p-7 text-center shadow-2xl sm:p-9">
@@ -485,17 +481,6 @@ function Index() {
         </div>
       </section>
 
-      <section className="bg-muted/40">
-        <div className="mx-auto max-w-4xl px-5 py-10 text-center sm:py-14">
-          <Eyebrow>Pense nisso</Eyebrow>
-          <div className="mt-6 space-y-3 text-lg text-muted-foreground"><p>Uma compra por impulso pode facilmente custar R$ 47.</p><p>Um jantar pode custar R$ 47.</p><p>Alguns pequenos gastos acumulados durante uma semana podem ultrapassar R$ 47.</p></div>
-          <p className="mx-auto mt-7 max-w-3xl text-xl font-bold leading-relaxed text-foreground">Aqui você está investindo esse valor em um método criado para ajudar você a enxergar melhor suas próprias decisões financeiras.</p>
-          <p className="mt-7 text-3xl font-black text-primary">DE R$ 97 POR R$ 47.</p>
-          <p className="mt-1 font-bold text-foreground">Ou 12x de R$ 5,22.</p>
-          <CtaButton className="mt-7">Quero organizar meu dinheiro</CtaButton>
-        </div>
-      </section>
-
       <section className="mx-auto max-w-5xl px-5 py-10 sm:py-14">
         <div className="rounded-lg border border-primary/30 bg-primary/5 p-8 text-center sm:p-12">
           <Eyebrow>Garantia de 7 dias</Eyebrow>
@@ -508,15 +493,6 @@ function Index() {
         <div className="mx-auto max-w-3xl px-5 py-10 sm:py-14">
           <div className="text-center"><Eyebrow>Perguntas frequentes</Eyebrow><SectionTitle className="mt-4">Ainda tem alguma dúvida?</SectionTitle></div>
           <div className="mt-10 space-y-3">{faq.map((item) => <FaqItem key={item.q} item={item} />)}</div>
-        </div>
-      </section>
-
-      <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-4xl px-5 py-10 text-center sm:py-14">
-          <h2 className="text-3xl font-black uppercase leading-tight sm:text-4xl">Comece hoje a enxergar para onde seu dinheiro está indo.</h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-primary-foreground/85">Tenha o método, o Prompt Mestre e o passo a passo para transformar o ChatGPT em uma ferramenta de apoio ao seu controle financeiro.</p>
-          <a href={CHECKOUT_URL} onClick={trackInitiateCheckout} className="cta-shake group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-foreground px-8 py-4 text-base font-extrabold uppercase text-background shadow-lg transition-transform active:scale-100 sm:w-auto">Quero acessar agora! <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" /></a>
-          <p className="mt-4 text-sm text-primary-foreground/80">R$ 47 à vista • 12x de R$ 5,22 • Garantia de 7 dias</p>
         </div>
       </section>
 
