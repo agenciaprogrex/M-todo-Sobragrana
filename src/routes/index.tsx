@@ -340,7 +340,7 @@ function Index() {
             <h1 className="text-3xl font-black leading-[1.08] text-foreground sm:text-4xl lg:text-5xl">
               Sem usar planilha. Veja como <span className="text-[1.15em] font-black text-primary">organizar</span> seus gastos em menos de <span className="text-[1.15em] font-black text-primary">1 minuto.</span>
             </h1>
-            <p className="mx-auto mt-4 max-w-3xl text-lg font-bold leading-relaxed text-foreground sm:text-xl">
+            <p className="mx-auto mt-4 max-w-3xl text-lg font-normal leading-relaxed text-foreground sm:text-xl">
               Aprenda como o ChatGPT para você registrar seus gastos em poucos minutos, e fazer seu dinheiro sobrar todo mês.
             </p>
             <WistiaVsl />
