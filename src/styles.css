@@ -178,6 +178,7 @@
 
 main.min-h-screen > section {
   border-top: 1px solid color-mix(in oklch, var(--color-border) 85%, transparent);
+  text-align: center;
 }
 
 main.min-h-screen > section[class*="py-"],

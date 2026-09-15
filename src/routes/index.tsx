@@ -231,10 +231,10 @@ function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
 
   if (compact) {
     return (
-      <div className="rounded-lg border border-primary/30 bg-primary/5 px-4 py-4">
-        <p className="text-sm font-black uppercase tracking-wide text-foreground">Condição promocional de hoje termina em</p>
-        <p className="mt-1 font-mono text-4xl font-black tabular-nums text-primary" aria-label={`Tempo restante: ${remaining}`}>{remaining}</p>
-        <p className="mt-1 text-sm font-semibold text-muted-foreground">Válida até 23h59 de {dateLabel || "hoje"}</p>
+      <div className="rounded-xl border border-primary bg-primary px-4 py-5 text-center shadow-lg">
+        <p className="text-sm font-black uppercase tracking-wide text-primary-foreground">Condição promocional de hoje termina em</p>
+        <p className="mt-1 font-mono text-4xl font-black tabular-nums text-primary-foreground" aria-label={`Tempo restante: ${remaining}`}>{remaining}</p>
+        <p className="mt-1 text-sm font-semibold text-primary-foreground/80">Válida até 23h59 de {dateLabel || "hoje"}</p>
       </div>
     );
   }
@@ -269,7 +269,7 @@ function CheckList({ items, compact = false }: { items: string[]; compact?: bool
   return (
     <ul className={compact ? "space-y-3" : "space-y-4"}>
       {items.map((item) => (
-        <li key={item} className="flex items-start gap-3">
+        <li key={item} className="flex items-start justify-center gap-3 text-center">
           <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
             <CheckIcon className="h-4 w-4" />
           </span>
@@ -474,14 +474,14 @@ function Index() {
           <div className="mx-auto mt-10 max-w-2xl space-y-7">
             <div className="rounded-xl border border-primary/30 bg-card p-7 text-center shadow-lg sm:p-9">
               <p className="text-sm font-extrabold uppercase text-primary">Preço especial</p>
-              <h3 className="mt-2 text-2xl font-black text-foreground">SobraGrana Essencial</h3>
-              <p className="mt-2 text-muted-foreground">Método prático, Prompt Mestre e materiais essenciais para começar.</p>
+              <h3 className="mt-2 text-2xl font-black text-foreground">SobraGrana Básico</h3>
+              <div className="mt-5"><CheckList compact items={["Método prático", "Prompt Mestre", "Passo a passo de como registrar gastos"]} /></div>
               <div className="mt-5 text-6xl font-black text-foreground">R$ 37<span className="text-2xl">,00</span></div>
               <CtaButton href={WHATSAPP_URL} className="mt-6 w-full">Quero a opção de R$ 37</CtaButton>
               <p className="mt-4 text-sm font-semibold text-muted-foreground">Acesso imediato • Garantia de 7 dias</p>
             </div>
             <div className="relative rounded-xl border-2 border-primary bg-card p-7 text-center shadow-2xl sm:p-9">
-              <div className="absolute inset-x-6 -top-4 rounded-full bg-primary px-4 py-2 text-sm font-black uppercase tracking-wide text-primary-foreground shadow-lg">🔥 Mais vendido</div>
+              <div className="absolute inset-x-6 -top-4 animate-pulse rounded-full bg-primary px-4 py-2 text-sm font-black uppercase tracking-wide text-primary-foreground shadow-lg">🔥 Mais vendido</div>
               <h3 className="mt-3 text-2xl font-black text-foreground">SobraGrana Completo</h3>
               <p className="mt-2 text-muted-foreground">Todos os conteúdos, checklists, exemplos e videoaulas bônus.</p>
               <div className="mt-3 text-6xl font-black text-foreground">R$ 47<span className="text-2xl">,00</span></div>
@@ -524,7 +524,7 @@ function Index() {
         <div className="mx-auto max-w-4xl px-5 py-10 text-center sm:py-14">
           <h2 className="text-3xl font-black uppercase leading-tight sm:text-4xl">Comece hoje a enxergar para onde seu dinheiro está indo.</h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-primary-foreground/85">Tenha o método, o Prompt Mestre e o passo a passo para transformar o ChatGPT em uma ferramenta de apoio ao seu controle financeiro.</p>
-          <a href={CHECKOUT_URL} onClick={trackInitiateCheckout} className="cta-shake group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-foreground px-8 py-4 text-base font-extrabold uppercase text-background shadow-lg transition-transform active:scale-100 sm:w-auto">Quero ter acesso ao SobraGrana <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" /></a>
+          <a href={CHECKOUT_URL} onClick={trackInitiateCheckout} className="cta-shake group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-foreground px-8 py-4 text-base font-extrabold uppercase text-background shadow-lg transition-transform active:scale-100 sm:w-auto">Quero acessar agora! <ArrowIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" /></a>
           <p className="mt-4 text-sm text-primary-foreground/80">R$ 47 à vista • 12x de R$ 5,22 • Garantia de 7 dias</p>
         </div>
       </section>
