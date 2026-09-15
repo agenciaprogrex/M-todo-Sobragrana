@@ -338,10 +338,10 @@ function Index() {
           <div className="mx-auto max-w-4xl text-center">
             <div className="mx-auto mb-5 inline-flex rounded-full border border-primary/20 bg-primary/5 px-5 py-2 shadow-sm"><Logo /></div>
             <h1 className="text-3xl font-black leading-[1.08] text-foreground sm:text-4xl lg:text-5xl">
-              Faça seu <span className="text-[1.12em] font-black text-primary">dinheiro</span> <span className="text-[1.12em] font-black uppercase text-primary">sobrar</span> no final do <span className="text-[1.12em] font-black text-primary">mês.</span>
+              Sem usar planilha. Veja como <span className="text-[1.15em] font-black text-primary">organizar</span> seus gastos em menos de <span className="text-[1.15em] font-black text-primary">1 minuto.</span>
             </h1>
-            <p className="mx-auto mt-4 max-w-3xl text-lg font-semibold leading-relaxed text-foreground sm:text-xl">
-              Descubra o método simples que usa o ChatGPT para você registrar seus gastos <span className="font-black text-primary">em poucos minutos</span>, saber quanto ainda pode gastar e <span className="font-black text-primary">ver o dinheiro sobrando.</span>
+            <p className="mx-auto mt-4 max-w-3xl text-lg font-bold leading-relaxed text-foreground sm:text-xl">
+              Aprenda como o ChatGPT para você registrar seus gastos em poucos minutos, e fazer seu dinheiro sobrar todo mês.
             </p>
             <WistiaVsl />
           </div>
