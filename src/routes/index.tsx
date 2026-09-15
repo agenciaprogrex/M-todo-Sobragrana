@@ -186,6 +186,7 @@ function CtaButton({ children, className = "", href = CHECKOUT_URL }: { children
 function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
   const [remaining, setRemaining] = useState("--:--:--");
   const [dateLabel, setDateLabel] = useState("");
+  const [showFloatingTimer, setShowFloatingTimer] = useState(false);
 
   useEffect(() => {
     const updateTimer = () => {
@@ -212,6 +213,22 @@ function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
     return () => window.clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (compact) return;
+    const updateVisibility = () => {
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollProgress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+      setShowFloatingTimer(scrollProgress >= 0.5);
+    };
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    window.addEventListener("resize", updateVisibility);
+    return () => {
+      window.removeEventListener("scroll", updateVisibility);
+      window.removeEventListener("resize", updateVisibility);
+    };
+  }, [compact]);
+
   if (compact) {
     return (
       <div className="rounded-lg border border-primary/30 bg-primary/5 px-4 py-4">
@@ -224,8 +241,10 @@ function DailyOfferTimer({ compact = false }: { compact?: boolean }) {
 
   const [hours, minutes, seconds] = remaining.split(":");
 
+  if (!showFloatingTimer) return null;
+
   return (
-    <div className="bg-[#080808] text-white shadow-lg">
+    <div className="fixed inset-x-0 top-0 z-50 bg-[#080808] text-white shadow-lg">
       <div className="mx-auto flex max-w-4xl flex-col items-center px-4 py-4 text-center sm:py-5">
         <p className="text-lg font-black uppercase tracking-wide sm:text-xl">🔥 Último dia de acesso</p>
         <p className="mt-1 text-sm font-semibold text-white/70 sm:text-base">Assista ao vídeo antes que a oferta termine.</p>
@@ -324,7 +343,7 @@ function Index() {
           <div className="mx-auto max-w-4xl text-center">
             <div className="mx-auto mb-5 inline-flex rounded-full border border-primary/20 bg-primary/5 px-5 py-2 shadow-sm"><Logo /></div>
             <h1 className="text-3xl font-black leading-[1.08] text-foreground sm:text-4xl lg:text-5xl">
-              Faça seu <span className="text-primary">dinheiro sobrar no final do mês</span> sem planilhas complicadas ou aplicativos que você abandona em poucos dias.
+              Faça seu <span className="text-[1.12em] font-black text-primary">dinheiro</span> <span className="text-[1.12em] font-black uppercase text-primary">sobrar</span> no final do <span className="text-[1.12em] font-black text-primary">mês.</span>
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-lg font-semibold leading-relaxed text-foreground sm:text-xl">
               Descubra o método simples que usa o ChatGPT para você registrar seus gastos <span className="font-black text-primary">em poucos minutos</span>, saber quanto ainda pode gastar e <span className="font-black text-primary">ver o dinheiro sobrando.</span>
@@ -384,41 +403,20 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-5 py-10 sm:py-14">
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <SectionTitle>“Mas eu preciso ganhar mais para conseguir me organizar...”</SectionTitle>
-            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">Essa é uma das crenças que mais atrapalham quem quer começar.</p>
-            <div className="mt-6 space-y-3 border-l-4 border-border pl-5 text-lg font-semibold text-foreground">
-              <p>“Quando meu salário aumentar, eu me organizo.”</p><p>“Quando ganhar mais, começo a guardar.”</p><p>“Agora não adianta porque ganho pouco.”</p>
-            </div>
-          </div>
-          <div className="self-center">
-            <p className="text-2xl font-black uppercase leading-tight text-primary sm:text-3xl">Ganhar mais sem ter controle não garante organização.</p>
-            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">Se você não sabe administrar R$ 3.000, simplesmente aumentar sua renda não cria automaticamente um novo comportamento.</p>
-            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">Por isso, antes de pensar apenas em ganhar mais, você precisa conseguir responder:</p>
-            <div className="mt-5 grid grid-cols-2 gap-3 text-center font-bold text-foreground">
-              {["Quanto entra?", "Quanto sai?", "Onde você está gastando?", "Quanto ainda pode gastar?"].map((question) => <div key={question} className="rounded-lg bg-secondary p-4">{question}</div>)}
-            </div>
-            <p className="mt-6 text-xl font-black text-foreground">É aqui que começa o controle.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-foreground text-background">
+      <section className="bg-primary/5 text-foreground">
         <div className="mx-auto grid max-w-5xl gap-10 px-5 py-10 sm:py-14 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="text-sm font-extrabold uppercase text-primary">Talvez você já tenha tentado</p>
             <h2 className="mt-4 text-3xl font-black leading-tight sm:text-4xl">“Eu já tentei controlar meus gastos e não consegui.”</h2>
-            <div className="mt-7 grid grid-cols-2 gap-3 text-sm font-semibold text-background/80">
-              {["Baixado aplicativo", "Criado planilha", "Anotado no bloco de notas", "Salvado vídeo de finanças"].map((attempt) => <div key={attempt} className="rounded-lg border border-background/15 p-4">{attempt}</div>)}
+            <div className="mt-7 grid grid-cols-2 gap-3 text-sm font-semibold text-foreground/80">
+              {["Baixado aplicativo", "Criado planilha", "Anotado no bloco de notas", "Salvado vídeo de finanças"].map((attempt) => <div key={attempt} className="rounded-lg border border-primary/20 bg-background p-4">{attempt}</div>)}
             </div>
           </div>
-          <div className="space-y-5 text-lg leading-relaxed text-background/75">
+          <div className="space-y-5 text-lg leading-relaxed text-muted-foreground">
             <p>Você prometeu: “Este mês eu vou controlar tudo.”</p>
             <p>Começou animado. Registrou alguns dias... E abandonou.</p>
             <p>Não necessariamente porque você é desorganizado. Talvez o método simplesmente tenha criado fricção demais para sua rotina.</p>
-            <p className="text-xl font-bold text-background">Porque quanto mais complicado for registrar uma compra, menor a chance de você fazer isso todos os dias.</p>
+            <p className="text-xl font-bold text-foreground">Porque quanto mais complicado for registrar uma compra, menor a chance de você fazer isso todos os dias.</p>
           </div>
         </div>
       </section>
@@ -457,30 +455,15 @@ function Index() {
         </div>
       </section>
 
-      <section className="bg-foreground text-background">
+      <section className="bg-primary/5 text-foreground">
         <div className="mx-auto max-w-5xl px-5 py-10 sm:py-14">
           <h2 className="max-w-4xl text-3xl font-black uppercase leading-tight sm:text-4xl">“Mas eu não tenho tempo para ficar controlando finanças todos os dias.”</h2>
           <p className="mt-6 text-xl font-bold text-primary">Você não precisa passar horas fazendo contas. A proposta é exatamente o contrário.</p>
           <div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {["Terminou uma compra? Registre.", "Saiu da padaria? Registre.", "Pagou o almoço? Registre.", "Abasteceu? Registre."].map((action) => <div key={action} className="rounded-lg border border-background/15 p-5 font-bold">{action}</div>)}
+            {["Terminou uma compra? Registre.", "Saiu da padaria? Registre.", "Pagou o almoço? Registre.", "Abasteceu? Registre."].map((action) => <div key={action} className="rounded-lg border border-primary/20 bg-background p-5 font-bold">{action}</div>)}
           </div>
-          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-background/75">Em vez de deixar dezenas de gastos acumularem para tentar lembrar de tudo depois, você cria o hábito de registrar quando acontece.</p>
+          <p className="mt-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">Em vez de deixar dezenas de gastos acumularem para tentar lembrar de tudo depois, você cria o hábito de registrar quando acontece.</p>
           <p className="mt-6 max-w-4xl text-2xl font-black uppercase leading-tight">Poucos minutos de atenção hoje podem evitar muita confusão no final do mês.</p>
-        </div>
-      </section>
-
-      <section className="bg-secondary/55">
-        <div className="mx-auto max-w-5xl px-5 py-10 sm:py-14">
-          <div className="text-center"><SectionTitle>Quanto custa não ter controle?</SectionTitle></div>
-          <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-muted-foreground">Não estamos falando necessariamente de uma compra enorme. Pode ser:</p>
-          <div className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-4 sm:grid-cols-4">
-            {["R$ 15 que você não percebeu", "R$ 30 de uma compra por impulso", "R$ 50 em algo que poderia esperar", "R$ 80 que você nem lembrava"].map((cost) => <div key={cost} className="rounded-lg bg-card p-5 text-center font-bold shadow-sm">{cost}</div>)}
-          </div>
-          <div className="mx-auto mt-9 max-w-3xl space-y-5 text-center text-lg leading-relaxed text-muted-foreground">
-            <p>Agora multiplique pequenas decisões como essas ao longo de um mês. E depois por 12 meses.</p>
-            <p className="text-2xl font-black uppercase text-foreground">O problema não é somente gastar. É gastar sem perceber o impacto acumulado das suas decisões.</p>
-            <p>Por isso, investir em um método que ajude você a enxergar seus próprios números pode ser o começo de uma mudança muito maior.</p>
-          </div>
         </div>
       </section>
 
