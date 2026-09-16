@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { createElement, useEffect, useState, type ReactNode } from "react";
 import heroMockup from "@/assets/mockup-hero.png";
 import chatgptControleFinanceiro from "@/assets/chatgpt-controle-financeiro.png";
+import painelFinanceiro from "@/assets/painel-financeiro.png";
 import { checkoutEventParameters, initMetaPixel, trackMetaEvent } from "@/lib/meta-pixel";
 
 const CHECKOUT_URL = "https://pay.kiwify.com.br/cVSnHjf";
@@ -352,14 +353,24 @@ function Index() {
       <section id="bloco-2" className="scroll-mt-20 bg-background">
         <div className="mx-auto max-w-5xl px-5 py-10 text-center sm:py-14">
           <SectionTitle>Tudo isso para você em poucos segundos</SectionTitle>
-          <img
-            src={chatgptControleFinanceiro}
-            alt="Exemplo do ChatGPT registrando um gasto e atualizando o controle financeiro"
-            width={1024}
-            height={1536}
-            loading="lazy"
-            className="mx-auto mt-10 h-auto w-full max-w-[680px] rounded-2xl border border-border shadow-2xl"
-          />
+          <div className="mt-10 grid gap-6 md:grid-cols-2 md:items-start">
+            <img
+              src={chatgptControleFinanceiro}
+              alt="Exemplo do ChatGPT registrando um gasto e atualizando o controle financeiro"
+              width={1024}
+              height={1536}
+              loading="lazy"
+              className="mx-auto h-auto w-full rounded-2xl border border-border shadow-2xl"
+            />
+            <img
+              src={painelFinanceiro}
+              alt="Painel mensal com resumo financeiro, gastos por categoria e próximos vencimentos"
+              width={1024}
+              height={1536}
+              loading="lazy"
+              className="mx-auto h-auto w-full rounded-2xl border border-border shadow-2xl"
+            />
+          </div>
         </div>
       </section>
 
